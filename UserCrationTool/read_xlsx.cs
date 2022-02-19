@@ -9,11 +9,11 @@ namespace UserCrationTool
             public string _path;
             public int _start, _end;
             public WorkSheet sheet;
-            /// <summary>
-            /// Передавайте диапазон столбцов таким образом"ABCDE...."
-            /// </summary>
-            /// <param name="_range"></param>
-            /// <returns></returns>
+        /// <summary>
+        /// Pass column range like this"ABCDE...."
+        /// </summary>
+        /// <param name="_range"></param>
+        /// <returns></returns>
         public string[][] _Data(string _range)
             {
                 string[][] data = new string[_range.Length][];
@@ -38,12 +38,12 @@ namespace UserCrationTool
 
                 _end = (sheet.Rows.Length);
                 string[] result = new string[_end];
-                int i = 0;
+                int items = 0;
 
                 foreach (var cell in sheet[readable_column + _start + ":" + readable_column + _end])
                 {
-                    result[i] = cell.Text;
-                    i++;
+                    result[items] = cell.Text;
+                    items++;
                 }
                 return result;
             }

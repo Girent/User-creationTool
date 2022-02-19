@@ -18,15 +18,15 @@ namespace UserCrationTool
             InitializeComponent();
             
         }
-
+        
         private void buttonRead_Click(object sender, EventArgs e)
         {
             listBox1.Items.Clear();
 
-            int str = comboStart_str.SelectedIndex;
-            string colums_name, colums_position;
+            read._start = comboStart_str.SelectedIndex;//set start string index
+            int string_num = comboStart_str.SelectedIndex;
 
-            read._start = comboStart_str.SelectedIndex;
+            string colums_name, colums_position;
             colums_name = comboName.SelectedItem.ToString();
             colums_position = comboPos.SelectedItem.ToString();
 
@@ -35,9 +35,9 @@ namespace UserCrationTool
 
             for (int column = 0; column < input_data.Length; column++)
             {
-                for (; str < input_data[column].Length; str++)
+                for (; string_num < input_data[column].Length; string_num++)
                 {
-                    countries[str- comboStart_str.SelectedIndex] = input_data[0][str] + " - "+input_data[1][str];
+                    countries[string_num- comboStart_str.SelectedIndex] = input_data[0][string_num] + " - "+input_data[1][string_num];
                 }
             }
             listBox1.Items.AddRange(countries);
@@ -48,6 +48,11 @@ namespace UserCrationTool
             openFileDialog1.ShowDialog();
             f_name.Text = openFileDialog1.FileName;
             read._path = openFileDialog1.FileName;
+        }
+
+        private void buttonCreate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
