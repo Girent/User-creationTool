@@ -8,14 +8,19 @@ namespace UserCrationTool
        {
             public string _path;
             public int _start, _end;
-
-            public string[][] _Data(string _range)
+            public WorkSheet sheet;
+            /// <summary>
+            /// Передавайте диапазон столбцов таким образом"ABCDE...."
+            /// </summary>
+            /// <param name="_range"></param>
+            /// <returns></returns>
+        public string[][] _Data(string _range)
             {
                 string[][] data = new string[_range.Length][];
 
                 for (int column = 0; column < _range.Length; column++)
                 {
-                    data[column] = _read(Convert.ToString(_range[column]));
+                    data[column] = _read(readable_column:Convert.ToString(_range[column]));
 
                 }
                 return data;
@@ -24,17 +29,18 @@ namespace UserCrationTool
             /// <summary>
             /// Input column index, return column
             /// </summary>
-            /// <param name="column"></param>
+            /// <param name="readable_column"></param>
             /// <returns></returns>
-            string[] _read(string column)
+            string[] _read(string readable_column)
             {
                 WorkBook workbook = WorkBook.Load(_path);
-                WorkSheet sheet = workbook.WorkSheets.First();
+                sheet = workbook.WorkSheets.First();
 
-                string[] result = new string[_end - _start];
+                _end = (sheet.Rows.Length);
+                string[] result = new string[_end];
                 int i = 0;
 
-                foreach (var cell in sheet[column + _start + ":" + column + _end])
+                foreach (var cell in sheet[readable_column + _start + ":" + readable_column + _end])
                 {
                     result[i] = cell.Text;
                     i++;
