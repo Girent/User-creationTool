@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UserCrationTool
@@ -23,19 +16,13 @@ namespace UserCrationTool
         {
             listBox1.Items.Clear();
             int start_index = comboStart_str.SelectedIndex+1;
+
             read_xlsx readFile_name = new read_xlsx();
-            string[] name_ls = readFile_name._Data(comboName.Text, start_index, pathFile);
-
-            //readFile_name._start = comboStart_str.SelectedIndex;//set start string index
             
-            //string colums_name, colums_position;
-            //colums_name = comboName.SelectedItem.ToString();
-            //colums_position = comboPos.SelectedItem.ToString();
+            string[] name_ls = readFile_name._Data(comboName.SelectedIndex, start_index, pathFile);
 
-            //var input_data = readFile_name._Data(colums_name+colums_position);
             string[] countries = name_ls;
 
-            
             listBox1.Items.AddRange(countries);
         }
 
@@ -48,7 +35,7 @@ namespace UserCrationTool
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

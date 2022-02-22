@@ -1,49 +1,53 @@
 ﻿using System;
-using System.Linq;
-using IronXL;
+using System.IO;
+using System.Windows.Forms;
+using OfficeOpenXml;
 
 namespace UserCrationTool
 {
-       public class read_xlsx
+       internal class read_xlsx
        {
             private string _path;
             private int _start;
-            public WorkSheet sheet;
-        /// <summary>
-        /// Pass column range like this"ABCDE...."
-        /// </summary>
-        /// <param name="_range"></param>
-        /// <returns></returns>
-        public string[] _Data(string _range, int startIndex, string filePath)
+            //public WorkSheet sheet;
+     
+            public string[] _Data(int _row, int startIndex, string filePath)
             {
-                _start = startIndex;
+                _start = startIndex-1;
                 _path = filePath;
 
-                string[] data = _read(_range);
+                string[] data = _read(_row);
 
                 return data;
             }
-
-            /// <summary>
-            /// Input column index, return column
-            /// </summary>
-            /// <param name="readable_column"></param>
-            /// <returns></returns>
-            private string[] _read(string readable_column)
+            private string[] _read(int col)
             {
-                WorkBook workbook = WorkBook.Load(_path);
-                sheet = workbook.WorkSheets.First();
+                FileInfo existingFile = new FileInfo(_path);
+                string[] result;
 
-                string[] result = new string[sheet.Rows.Length - (_start-1)];
-                int items = 0;
-                //int _end = sheet.Rows.Length - _start;
-
-                foreach (var cell in sheet[readable_column + _start + ":" + readable_column + sheet.Rows.Length])
+                using (ExcelPackage package = new ExcelPackage(existingFile))
                 {
-                    result[items] = cell.Text;
-                    items++;
+                //get the first worksheet in the workbook
+                ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
+
+                int rowCount = worksheet.Dimension.End.Row - _start;     //get row count
+                result = new string[rowCount - _start];
+
+                try
+                {
+                    for (int row = (_start + 1); row <= rowCount; row++)
+                    {
+                        result[row - (_start + 1)] = worksheet.Cells[row, col + 1].Value.ToString().Trim();
+                    }
                 }
-                return result;
+                catch (Exception ext)
+                {
+                    Clipboard.SetText(ext.ToString());
+                    MessageBox.Show("Incorrect value selected, check data (error copied to clipboard)", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    Application.Restart();
+                }
+            }
+            return result;
             }
 
         }

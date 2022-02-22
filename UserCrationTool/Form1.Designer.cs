@@ -162,10 +162,7 @@ namespace UserCrationTool
             this.comboStart_str.Items.AddRange(new object[] {
             "1",
             "2",
-            "3",
-            "4",
-            "5",
-            "6"});
+            "3"});
             this.comboStart_str.Location = new System.Drawing.Point(657, 106);
             this.comboStart_str.Name = "comboStart_str";
             this.comboStart_str.Size = new System.Drawing.Size(121, 21);
