@@ -6,23 +6,21 @@ namespace UserCrationTool
 {
        public class read_xlsx
        {
-            public string _path;
-            public int _start, _end;
+            private string _path;
+            private int _start;
             public WorkSheet sheet;
         /// <summary>
         /// Pass column range like this"ABCDE...."
         /// </summary>
         /// <param name="_range"></param>
         /// <returns></returns>
-        public string[][] _Data(string _range)
+        public string[] _Data(string _range, int startIndex, string filePath)
             {
-                string[][] data = new string[_range.Length][];
+                _start = startIndex;
+                _path = filePath;
 
-                for (int column = 0; column < _range.Length; column++)
-                {
-                    data[column] = _read(readable_column:Convert.ToString(_range[column]));
+                string[] data = _read(_range);
 
-                }
                 return data;
             }
 
@@ -31,16 +29,16 @@ namespace UserCrationTool
             /// </summary>
             /// <param name="readable_column"></param>
             /// <returns></returns>
-            string[] _read(string readable_column)
+            private string[] _read(string readable_column)
             {
                 WorkBook workbook = WorkBook.Load(_path);
                 sheet = workbook.WorkSheets.First();
 
-                _end = (sheet.Rows.Length);
-                string[] result = new string[_end];
+                string[] result = new string[sheet.Rows.Length - (_start-1)];
                 int items = 0;
+                //int _end = sheet.Rows.Length - _start;
 
-                foreach (var cell in sheet[readable_column + _start + ":" + readable_column + _end])
+                foreach (var cell in sheet[readable_column + _start + ":" + readable_column + sheet.Rows.Length])
                 {
                     result[items] = cell.Text;
                     items++;
