@@ -19,7 +19,7 @@ namespace UserCrationTool
 
             read_xlsx readFile_name = new read_xlsx();
             
-            string[] name_ls = readFile_name._Data(comboName.SelectedIndex, start_index, pathFile);
+            string[] name_ls = readFile_name.ColumnData(comboName.SelectedIndex, start_index, pathFile);
 
             string[] countries = name_ls;
 
@@ -36,6 +36,19 @@ namespace UserCrationTool
         private void buttonCreate_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void checkBoxLogin_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxLogin.Checked)
+            {
+                comboLogin.Enabled = true;
+            }
+            else
+            {
+                comboLogin.Enabled = false;
+            }
+           
         }
     }
 }

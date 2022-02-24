@@ -44,8 +44,10 @@ namespace UserCrationTool
             this.comboStart_str = new System.Windows.Forms.ComboBox();
             this.checkBoxActiveDirectory = new System.Windows.Forms.CheckBox();
             this.buttonCreate = new System.Windows.Forms.Button();
-            this.comboBoxPassLength = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.comboLogin = new System.Windows.Forms.ComboBox();
+            this.checkBoxLogin = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox1
@@ -53,7 +55,7 @@ namespace UserCrationTool
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(12, 31);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(416, 407);
+            this.listBox1.Size = new System.Drawing.Size(414, 407);
             this.listBox1.TabIndex = 0;
             // 
             // label1
@@ -67,7 +69,7 @@ namespace UserCrationTool
             // 
             // buttonRead
             // 
-            this.buttonRead.Location = new System.Drawing.Point(432, 141);
+            this.buttonRead.Location = new System.Drawing.Point(432, 191);
             this.buttonRead.Name = "buttonRead";
             this.buttonRead.Size = new System.Drawing.Size(75, 23);
             this.buttonRead.TabIndex = 2;
@@ -79,11 +81,14 @@ namespace UserCrationTool
             // 
             this.comboName.FormattingEnabled = true;
             this.comboName.Items.AddRange(new object[] {
-            "A",
+            "А",
             "B",
             "C",
             "D",
-            "E"});
+            "E",
+            "F",
+            "G",
+            "H"});
             this.comboName.Location = new System.Drawing.Point(657, 52);
             this.comboName.Name = "comboName";
             this.comboName.Size = new System.Drawing.Size(121, 21);
@@ -94,16 +99,18 @@ namespace UserCrationTool
             // 
             this.comboPos.FormattingEnabled = true;
             this.comboPos.Items.AddRange(new object[] {
-            "A",
+            "А",
             "B",
             "C",
             "D",
-            "E"});
+            "E",
+            "F",
+            "G",
+            "H"});
             this.comboPos.Location = new System.Drawing.Point(657, 79);
             this.comboPos.Name = "comboPos";
             this.comboPos.Size = new System.Drawing.Size(121, 21);
             this.comboPos.TabIndex = 5;
-            this.comboPos.Text = "A";
             // 
             // label2
             // 
@@ -150,7 +157,7 @@ namespace UserCrationTool
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(435, 114);
+            this.label4.Location = new System.Drawing.Point(434, 161);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(151, 13);
             this.label4.TabIndex = 11;
@@ -163,7 +170,7 @@ namespace UserCrationTool
             "1",
             "2",
             "3"});
-            this.comboStart_str.Location = new System.Drawing.Point(657, 106);
+            this.comboStart_str.Location = new System.Drawing.Point(657, 161);
             this.comboStart_str.Name = "comboStart_str";
             this.comboStart_str.Size = new System.Drawing.Size(121, 21);
             this.comboStart_str.TabIndex = 12;
@@ -189,41 +196,62 @@ namespace UserCrationTool
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
-            // comboBoxPassLength
-            // 
-            this.comboBoxPassLength.FormattingEnabled = true;
-            this.comboBoxPassLength.Items.AddRange(new object[] {
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16"});
-            this.comboBoxPassLength.Location = new System.Drawing.Point(657, 218);
-            this.comboBoxPassLength.Name = "comboBoxPassLength";
-            this.comboBoxPassLength.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxPassLength.TabIndex = 15;
-            this.comboBoxPassLength.Text = "8";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(435, 226);
+            this.label5.Location = new System.Drawing.Point(434, 142);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(158, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Количество символов пароля";
+            this.label5.Size = new System.Drawing.Size(139, 13);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Выберите столбец логина";
+            // 
+            // comboLogin
+            // 
+            this.comboLogin.Enabled = false;
+            this.comboLogin.FormattingEnabled = true;
+            this.comboLogin.Items.AddRange(new object[] {
+            "А",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"});
+            this.comboLogin.Location = new System.Drawing.Point(657, 134);
+            this.comboLogin.Name = "comboLogin";
+            this.comboLogin.Size = new System.Drawing.Size(121, 21);
+            this.comboLogin.TabIndex = 16;
+            // 
+            // checkBoxLogin
+            // 
+            this.checkBoxLogin.AutoSize = true;
+            this.checkBoxLogin.Location = new System.Drawing.Point(657, 111);
+            this.checkBoxLogin.Name = "checkBoxLogin";
+            this.checkBoxLogin.Size = new System.Drawing.Size(86, 17);
+            this.checkBoxLogin.TabIndex = 17;
+            this.checkBoxLogin.Text = "Custom login";
+            this.checkBoxLogin.UseVisualStyleBackColor = true;
+            this.checkBoxLogin.CheckedChanged += new System.EventHandler(this.checkBoxLogin_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(437, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(152, 13);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Выбрать логины из таблицы";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.checkBoxLogin);
+            this.Controls.Add(this.comboLogin);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.comboBoxPassLength);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.checkBoxActiveDirectory);
             this.Controls.Add(this.comboStart_str);
@@ -237,6 +265,7 @@ namespace UserCrationTool
             this.Controls.Add(this.buttonRead);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "UserCrationTool";
@@ -261,8 +290,10 @@ namespace UserCrationTool
         private System.Windows.Forms.ComboBox comboStart_str;
         private System.Windows.Forms.CheckBox checkBoxActiveDirectory;
         private System.Windows.Forms.Button buttonCreate;
-        private System.Windows.Forms.ComboBox comboBoxPassLength;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboLogin;
+        private System.Windows.Forms.CheckBox checkBoxLogin;
+        private System.Windows.Forms.Label label6;
     }
 }
 
