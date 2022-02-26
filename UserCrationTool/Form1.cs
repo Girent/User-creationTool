@@ -35,7 +35,8 @@ namespace UserCrationTool
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-
+            UserCreator usr = new UserCreator();
+            usr.Create();
         }
     }
 }
