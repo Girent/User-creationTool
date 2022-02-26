@@ -7,22 +7,21 @@ namespace UserCrationTool
 {
        internal class read_xlsx
        {
-            private string _path;
-            private int _start;
-            //public WorkSheet sheet;
+            private string file_path;
+            private int start_row;
      
-            public string[] _Data(int _row, int startIndex, string filePath)
+            public string[] ColumnData(int _row, int startIndex, string filePath)
             {
-                _start = startIndex-1;
-                _path = filePath;
+                start_row = startIndex-1;
+                file_path = filePath;
 
-                string[] data = _read(_row);
+                string[] data = column_Read(_row);
 
                 return data;
             }
-            private string[] _read(int col)
+            private string[] column_Read(int col)
             {
-                FileInfo existingFile = new FileInfo(_path);
+                FileInfo existingFile = new FileInfo(file_path);
                 string[] result;
 
                 using (ExcelPackage package = new ExcelPackage(existingFile))
@@ -30,14 +29,14 @@ namespace UserCrationTool
                 //get the first worksheet in the workbook
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
 
-                int rowCount = worksheet.Dimension.End.Row - _start;     //get row count
-                result = new string[rowCount - _start];
+                int rowCount = worksheet.Dimension.End.Row - start_row;     //get row count
+                result = new string[rowCount - start_row];
 
                 try
                 {
-                    for (int row = (_start + 1); row <= rowCount; row++)
+                    for (int row = (start_row + 1); row <= rowCount; row++)
                     {
-                        result[row - (_start + 1)] = worksheet.Cells[row, col + 1].Value.ToString().Trim();
+                        result[row - (start_row + 1)] = worksheet.Cells[row, col + 1].Value.ToString().Trim();
                     }
                 }
                 catch (Exception ext)
