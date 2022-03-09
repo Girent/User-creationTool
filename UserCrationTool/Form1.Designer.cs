@@ -33,21 +33,20 @@ namespace UserCrationTool
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonRead = new System.Windows.Forms.Button();
-            this.comboName = new System.Windows.Forms.ComboBox();
             this.comboPos = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.buttonOpen = new System.Windows.Forms.Button();
             this.f_name = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.comboStart_str = new System.Windows.Forms.ComboBox();
-            this.checkBoxActiveDirectory = new System.Windows.Forms.CheckBox();
             this.buttonCreate = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.comboLogin = new System.Windows.Forms.ComboBox();
             this.checkBoxLogin = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboName = new System.Windows.Forms.ComboBox();
+            this.checkBox_position = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // listBox1
@@ -77,26 +76,9 @@ namespace UserCrationTool
             this.buttonRead.UseVisualStyleBackColor = true;
             this.buttonRead.Click += new System.EventHandler(this.buttonRead_Click);
             // 
-            // comboName
-            // 
-            this.comboName.FormattingEnabled = true;
-            this.comboName.Items.AddRange(new object[] {
-            "А",
-            "B",
-            "C",
-            "D",
-            "E",
-            "F",
-            "G",
-            "H"});
-            this.comboName.Location = new System.Drawing.Point(657, 52);
-            this.comboName.Name = "comboName";
-            this.comboName.Size = new System.Drawing.Size(121, 21);
-            this.comboName.TabIndex = 4;
-            this.comboName.Text = "A";
-            // 
             // comboPos
             // 
+            this.comboPos.Enabled = false;
             this.comboPos.FormattingEnabled = true;
             this.comboPos.Items.AddRange(new object[] {
             "А",
@@ -120,15 +102,6 @@ namespace UserCrationTool
             this.label2.Size = new System.Drawing.Size(136, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Выберите столбец имени";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(434, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(159, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Выберите столбец должности";
             // 
             // openFileDialog1
             // 
@@ -176,18 +149,9 @@ namespace UserCrationTool
             this.comboStart_str.TabIndex = 12;
             this.comboStart_str.Text = "1";
             // 
-            // checkBoxActiveDirectory
-            // 
-            this.checkBoxActiveDirectory.AutoSize = true;
-            this.checkBoxActiveDirectory.Location = new System.Drawing.Point(657, 195);
-            this.checkBoxActiveDirectory.Name = "checkBoxActiveDirectory";
-            this.checkBoxActiveDirectory.Size = new System.Drawing.Size(101, 17);
-            this.checkBoxActiveDirectory.TabIndex = 13;
-            this.checkBoxActiveDirectory.Text = "Active Directory";
-            this.checkBoxActiveDirectory.UseVisualStyleBackColor = true;
-            // 
             // buttonCreate
             // 
+            this.buttonCreate.Enabled = false;
             this.buttonCreate.Location = new System.Drawing.Point(703, 415);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(75, 23);
@@ -226,6 +190,7 @@ namespace UserCrationTool
             // checkBoxLogin
             // 
             this.checkBoxLogin.AutoSize = true;
+            this.checkBoxLogin.Enabled = false;
             this.checkBoxLogin.Location = new System.Drawing.Point(657, 111);
             this.checkBoxLogin.Name = "checkBoxLogin";
             this.checkBoxLogin.Size = new System.Drawing.Size(86, 17);
@@ -243,25 +208,54 @@ namespace UserCrationTool
             this.label6.TabIndex = 18;
             this.label6.Text = "Выбрать логины из таблицы";
             // 
+            // comboName
+            // 
+            this.comboName.Enabled = false;
+            this.comboName.FormattingEnabled = true;
+            this.comboName.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H"});
+            this.comboName.Location = new System.Drawing.Point(657, 56);
+            this.comboName.Name = "comboName";
+            this.comboName.Size = new System.Drawing.Size(121, 21);
+            this.comboName.TabIndex = 19;
+            // 
+            // checkBox_position
+            // 
+            this.checkBox_position.AutoSize = true;
+            this.checkBox_position.Enabled = false;
+            this.checkBox_position.Location = new System.Drawing.Point(440, 79);
+            this.checkBox_position.Name = "checkBox_position";
+            this.checkBox_position.Size = new System.Drawing.Size(171, 17);
+            this.checkBox_position.TabIndex = 20;
+            this.checkBox_position.Text = "Выберите столбец описания";
+            this.checkBox_position.UseVisualStyleBackColor = true;
+            this.checkBox_position.CheckedChanged += new System.EventHandler(this.checkBox_position_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBox_position);
+            this.Controls.Add(this.comboName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.checkBoxLogin);
             this.Controls.Add(this.comboLogin);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.buttonCreate);
-            this.Controls.Add(this.checkBoxActiveDirectory);
             this.Controls.Add(this.comboStart_str);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.f_name);
             this.Controls.Add(this.buttonOpen);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboPos);
-            this.Controls.Add(this.comboName);
             this.Controls.Add(this.buttonRead);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox1);
@@ -279,21 +273,20 @@ namespace UserCrationTool
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonRead;
-        private System.Windows.Forms.ComboBox comboName;
         private System.Windows.Forms.ComboBox comboPos;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button buttonOpen;
         private System.Windows.Forms.Label f_name;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboStart_str;
-        private System.Windows.Forms.CheckBox checkBoxActiveDirectory;
         private System.Windows.Forms.Button buttonCreate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboLogin;
         private System.Windows.Forms.CheckBox checkBoxLogin;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboName;
+        private System.Windows.Forms.CheckBox checkBox_position;
     }
 }
 

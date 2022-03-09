@@ -7,19 +7,19 @@ namespace UserCrationTool
 {
        internal class read_xlsx
        {
-            private string file_path;
+        private string file_path;
             private int start_row;
      
-            public string[] ColumnData(int _row, int startIndex, string filePath)
+            public string[] ColumnData(int _column, int startIndex, string filePath)
             {
-                start_row = startIndex-1;
+                start_row = startIndex;
                 file_path = filePath;
 
-                string[] data = column_Read(_row);
+                string[] data = column_Read(_column);
 
                 return data;
             }
-            private string[] column_Read(int col)
+            private string[] column_Read(int column)
             {
                 FileInfo existingFile = new FileInfo(file_path);
                 string[] result;
@@ -36,7 +36,7 @@ namespace UserCrationTool
                 {
                     for (int row = (start_row + 1); row <= rowCount; row++)
                     {
-                        result[row - (start_row + 1)] = worksheet.Cells[row, col + 1].Value.ToString().Trim();
+                        result[row - (start_row + 1)] = worksheet.Cells[row, column+1].Value.ToString().Trim();
                     }
                 }
                 catch (Exception ext)

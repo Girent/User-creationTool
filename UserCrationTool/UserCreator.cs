@@ -5,11 +5,11 @@ namespace UserCrationTool
 {
     internal class UserCreator
     {
-        public void Create (string name, string login, string password, string description)
+        public void Create(string login, string password, string description = "")
         {
             DirectoryEntry AD = new DirectoryEntry("WinNT://" +
             Environment.MachineName + ",computer");
-            DirectoryEntry NewUser = AD.Children.Add(login, name);
+            DirectoryEntry NewUser = AD.Children.Add(login, "user");
             NewUser.Invoke("SetPassword", new object[] { password });
             NewUser.Invoke("Put", new object[] { "Description", description });
             NewUser.CommitChanges();
