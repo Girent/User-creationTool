@@ -71,9 +71,7 @@ namespace UserCrationTool
         }
         private void buttonCreate_Click(object sender, EventArgs e)
         {
-            UserCreator usr = new UserCreator();
             Generator pass = new Generator();
-            UsersDataExport xlsx = new UsersDataExport();
             List<string[]> headerRow = new List<string[]>()
                 {
                   new string[] { "Name", "Password", "Descr" }
@@ -84,7 +82,7 @@ namespace UserCrationTool
                 for (int i = 0; i < getData.Length; i++)
                 {
                     password = pass.generatePass();
-                    usr.Create(getData[i], password, position[i]);
+                    UserCreator.Create(getData[i], password, position[i]);
                     headerRow.Add(new string[] { getData[i], password, position[i] });
                 }
             }
@@ -93,11 +91,11 @@ namespace UserCrationTool
                 for (int i = 0; i < getData.Length; i++)
                 {
                     password = pass.generatePass();
-                    usr.Create(getData[i], password, getData[i]);
+                    UserCreator.Create(getData[i], password, getData[i]);
                     headerRow.Add(new string[] { getData[i], password, getData[i] });
                 }
             }
-            xlsx.addXlsx(headerRow);
+            UsersDataExport.addXlsx(headerRow);
             MessageBox.Show("Created: "+getData.Length + " users", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
         }

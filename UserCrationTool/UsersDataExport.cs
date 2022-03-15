@@ -10,7 +10,7 @@ namespace UserCrationTool
 {
     internal class UsersDataExport
     {
-        public void addXlsx(List<string[]> ussrList)
+        public static void addXlsx(List<string[]> ussrList)
         {
             using (ExcelPackage excel = new ExcelPackage())
             {

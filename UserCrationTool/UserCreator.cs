@@ -5,7 +5,7 @@ namespace UserCrationTool
 {
     internal class UserCreator
     {
-        public void Create(string login, string password, string description = "")
+        public static void Create(string login, string password, string description = "")
         {
             DirectoryEntry AD = new DirectoryEntry("WinNT://" +
             Environment.MachineName + ",computer");
