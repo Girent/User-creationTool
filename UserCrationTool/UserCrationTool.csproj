@@ -78,7 +78,7 @@
     <Compile Include="Data_processing.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="read_xlsx.cs" />
+    <Compile Include="ReadXlsx.cs" />
     <Compile Include="UserCreator.cs" />
     <Compile Include="UsersDataExport.cs" />
     <EmbeddedResource Include="Form1.resx">

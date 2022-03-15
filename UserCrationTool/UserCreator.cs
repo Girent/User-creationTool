@@ -16,9 +16,11 @@ namespace UserCrationTool
 
             DirectoryEntry grp;
             grp = AD.Children.Find("Пользователи", "group");
-            if (grp != null) { grp.Invoke("Add", new object[] { NewUser.Path.ToString() }); }
+            if (grp != null)  
+                grp.Invoke("Add", new object[] { NewUser.Path.ToString() });
             grp = AD.Children.Find("Пользователи удаленного рабочего стола", "group");
-            if (grp != null) { grp.Invoke("Add", new object[] { NewUser.Path.ToString() }); }
+            if (grp != null)  
+                grp.Invoke("Add", new object[] { NewUser.Path.ToString() }); 
         }
     }
 }

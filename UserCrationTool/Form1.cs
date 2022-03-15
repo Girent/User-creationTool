@@ -6,10 +6,10 @@ namespace UserCrationTool
 {
     public partial class Form1 : Form
     {
-        private int start_index;
-        private string pathFile;
-        private string[] getData;
-        private string[] position;
+        private int start_Index;
+        private string path_File;
+        private string[] get_Data;
+        private string[] user_Description;
         public Form1()
         {
             InitializeComponent();
@@ -19,55 +19,41 @@ namespace UserCrationTool
         {
             openFileDialog1.ShowDialog();
             f_name.Text = openFileDialog1.FileName;
-            pathFile = openFileDialog1.FileName;
+            path_File = openFileDialog1.FileName;
             if (f_name.Text != "Path")
             {
                 comboName.Enabled = true;
-                checkBox_position.Enabled = true;
+                checkBox_description.Enabled = true;
+                buttonRead.Enabled = true;
             }
         }
-        private void checkBox_position_CheckedChanged(object sender, EventArgs e)
+        private void checkBoxDescript_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox_position.Checked)
-            {
-                comboPos.Enabled = true;
-            }
-            else
-            {
-                comboPos.Enabled = false;
-            }
+            comboPos.Enabled = checkBox_description.Checked ? true : false;
         }
         private void checkBoxLogin_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxLogin.Checked)
-            {
-                //comboLogin.Enabled = true;
-            }
-            else
-            {
-                comboLogin.Enabled = false;
-            }
-
+            comboLogin.Enabled = checkBoxLogin.Checked ? false : false;
         }
         private void buttonRead_Click(object sender, EventArgs e)
         {
             buttonCreate.Enabled = true;
 
-            start_index = comboStart_str.SelectedIndex;
+            start_Index = comboStart_str.SelectedIndex;
 
 
             listBox1.Items.Clear();
-            if (checkBox_position.Checked)
+            if (checkBox_description.Checked)
             {
-                read_xlsx readFile_position = new read_xlsx();
-                position = readFile_position.ColumnData(comboPos.SelectedIndex, start_index, pathFile);
+                ReadXlsx readFile_position = new ReadXlsx();
+                user_Description = readFile_position.ColumnData(comboPos.SelectedIndex, start_Index, path_File);
             }
-                read_xlsx readFile_name = new read_xlsx();
+                ReadXlsx readFile_name = new ReadXlsx();
 
 
-            getData = readFile_name.ColumnData(comboName.SelectedIndex, start_index, pathFile);
+            get_Data = readFile_name.ColumnData(comboName.SelectedIndex, start_Index, path_File);
 
-            listBox1.Items.AddRange(getData);
+            listBox1.Items.AddRange(get_Data);
         }
         private void buttonCreate_Click(object sender, EventArgs e)
         {
@@ -76,33 +62,27 @@ namespace UserCrationTool
                 {
                   new string[] { "Name", "Password", "Descr" }
                 };
-            string password;
-            if (checkBox_position.Checked)
+            string usr_password;
+            if (checkBox_description.Checked)
             {
-                for (int i = 0; i < getData.Length; i++)
+                for (int i = 0; i < get_Data.Length; i++)
                 {
-                    password = pass.generatePass();
-                    UserCreator.Create(getData[i], password, position[i]);
-                    headerRow.Add(new string[] { getData[i], password, position[i] });
+                    usr_password = pass.GeneratePass();
+                    UserCreator.Create(get_Data[i], usr_password, user_Description[i]);
+                    headerRow.Add(new string[] { get_Data[i], usr_password, user_Description[i] });
                 }
             }
             else
             {
-                for (int i = 0; i < getData.Length; i++)
+                for (int i = 0; i < get_Data.Length; i++)
                 {
-                    password = pass.generatePass();
-                    UserCreator.Create(getData[i], password, getData[i]);
-                    headerRow.Add(new string[] { getData[i], password, getData[i] });
+                    usr_password = pass.GeneratePass();
+                    UserCreator.Create(get_Data[i], usr_password, get_Data[i]);
+                    headerRow.Add(new string[] { get_Data[i], usr_password, get_Data[i] });
                 }
             }
-            UsersDataExport.addXlsx(headerRow);
-            MessageBox.Show("Created: "+getData.Length + " users", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-           
+            UsersDataExport.AddXlsx(headerRow);
+            MessageBox.Show("Created: "+get_Data.Length + " users", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
         }
     }

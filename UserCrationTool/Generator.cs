@@ -6,7 +6,7 @@ namespace UserCrationTool
     internal class Generator
     {
         private readonly Random random = new Random();
-        public string generatePass()
+        public string GeneratePass()
         {
             var passwordBuilder = new StringBuilder();
 

@@ -46,7 +46,7 @@ namespace UserCrationTool
             this.checkBoxLogin = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboName = new System.Windows.Forms.ComboBox();
-            this.checkBox_position = new System.Windows.Forms.CheckBox();
+            this.checkBox_description = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // listBox1
@@ -68,6 +68,7 @@ namespace UserCrationTool
             // 
             // buttonRead
             // 
+            this.buttonRead.Enabled = false;
             this.buttonRead.Location = new System.Drawing.Point(432, 191);
             this.buttonRead.Name = "buttonRead";
             this.buttonRead.Size = new System.Drawing.Size(75, 23);
@@ -228,22 +229,22 @@ namespace UserCrationTool
             // 
             // checkBox_position
             // 
-            this.checkBox_position.AutoSize = true;
-            this.checkBox_position.Enabled = false;
-            this.checkBox_position.Location = new System.Drawing.Point(440, 79);
-            this.checkBox_position.Name = "checkBox_position";
-            this.checkBox_position.Size = new System.Drawing.Size(171, 17);
-            this.checkBox_position.TabIndex = 20;
-            this.checkBox_position.Text = "Выберите столбец описания";
-            this.checkBox_position.UseVisualStyleBackColor = true;
-            this.checkBox_position.CheckedChanged += new System.EventHandler(this.checkBox_position_CheckedChanged);
+            this.checkBox_description.AutoSize = true;
+            this.checkBox_description.Enabled = false;
+            this.checkBox_description.Location = new System.Drawing.Point(440, 79);
+            this.checkBox_description.Name = "checkBox_position";
+            this.checkBox_description.Size = new System.Drawing.Size(171, 17);
+            this.checkBox_description.TabIndex = 20;
+            this.checkBox_description.Text = "Выберите столбец описания";
+            this.checkBox_description.UseVisualStyleBackColor = true;
+            this.checkBox_description.CheckedChanged += new System.EventHandler(this.checkBoxDescript_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.checkBox_position);
+            this.Controls.Add(this.checkBox_description);
             this.Controls.Add(this.comboName);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.checkBoxLogin);
@@ -286,7 +287,7 @@ namespace UserCrationTool
         private System.Windows.Forms.CheckBox checkBoxLogin;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox comboName;
-        private System.Windows.Forms.CheckBox checkBox_position;
+        private System.Windows.Forms.CheckBox checkBox_description;
     }
 }
 

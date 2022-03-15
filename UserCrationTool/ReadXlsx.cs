@@ -5,15 +5,15 @@ using OfficeOpenXml;
 
 namespace UserCrationTool
 {
-       internal class read_xlsx
+       internal class ReadXlsx
        {
-        private string file_path;
-            private int start_row;
+        private string file_Path;
+            private int start_Row;
      
             public string[] ColumnData(int _column, int startIndex, string filePath)
             {
-                start_row = startIndex;
-                file_path = filePath;
+                start_Row = startIndex;
+                file_Path = filePath;
 
                 string[] data = column_Read(_column);
 
@@ -21,7 +21,7 @@ namespace UserCrationTool
             }
             private string[] column_Read(int column)
             {
-                FileInfo existingFile = new FileInfo(file_path);
+                FileInfo existingFile = new FileInfo(file_Path);
                 string[] result;
 
                 using (ExcelPackage package = new ExcelPackage(existingFile))
@@ -29,14 +29,14 @@ namespace UserCrationTool
                 //get the first worksheet in the workbook
                 ExcelWorksheet worksheet = package.Workbook.Worksheets[1];
 
-                int rowCount = worksheet.Dimension.End.Row - start_row;     //get row count
-                result = new string[rowCount - start_row];
+                int rowCount = worksheet.Dimension.End.Row;     //get row count
+                result = new string[rowCount-start_Row];
 
                 try
                 {
-                    for (int row = (start_row + 1); row <= rowCount; row++)
+                    for (int row = (start_Row+1); row <= rowCount; row++)
                     {
-                        result[row - (start_row + 1)] = worksheet.Cells[row, column+1].Value.ToString().Trim();
+                        result[row - (start_Row+1)] = worksheet.Cells[row, column+1].Value.ToString().Trim();
                     }
                 }
                 catch (Exception ext)
