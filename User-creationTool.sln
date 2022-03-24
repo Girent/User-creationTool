@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserCrationTool", "UserCrationTool\UserCrationTool.csproj", "{0F4CCE23-9DDE-44B4-8B0F-CC5FC5E665EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User-creationTool", "User-creationTool\User-creationTool.csproj", "{0F4CCE23-9DDE-44B4-8B0F-CC5FC5E665EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
